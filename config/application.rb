@@ -40,5 +40,8 @@ module Strafforts
 
     # Use Sidekiq for background queue processing.
     config.active_job.queue_adapter = :sidekiq
+
+    # Redis for caching.
+    config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] ||= 'redis://redis:6379/1' }
   end
 end

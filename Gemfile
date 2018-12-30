@@ -48,3 +48,6 @@ gem 'tzinfo-data'
 
 # Simple, efficient background processing for Ruby
 gem 'sidekiq'
+
+# A Ruby client library for Redis
+gem 'redis'
