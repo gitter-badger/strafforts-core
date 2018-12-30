@@ -37,5 +37,8 @@ module Strafforts
       logger.formatter = config.log_formatter
       config.logger    = ActiveSupport::TaggedLogging.new(logger)
     end
+
+    # Use Sidekiq for background queue processing.
+    config.active_job.queue_adapter = :sidekiq
   end
 end

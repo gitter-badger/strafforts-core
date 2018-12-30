@@ -30,6 +30,17 @@ services:
     env_file:
       - '.env'
 
+  sidekiq:
+    depends_on:
+      - 'db'
+      - 'redis'
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - '.:/app'
+    env_file:
+      - '.env'
+
 volumes:
   redis:
   postgres:
