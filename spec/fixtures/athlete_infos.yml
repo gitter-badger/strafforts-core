@@ -1,0 +1,19 @@
+athlete_9123806:
+  athlete_id: 9123806
+  username: yizeng
+  firstname: Yi
+  lastname: Zeng
+  profile_medium: https://dgalywyr863hv.cloudfront.net/pictures/athletes/9123806/2937558/10/medium.jpg
+  profile: https://dgalywyr863hv.cloudfront.net/pictures/athletes/9123806/2937558/10/large.jpg
+  city_id: 1
+  state_id: 1
+  country_id: 1
+  sex: M
+  follower_count: 725
+  friend_count: 95
+  athlete_type: 1
+  date_preference: "%m/%d/%Y"
+  measurement_preference: meters
+  weight: 63.0
+  created_at: '2018-02-10 07:49:31.473168'
+  updated_at: '2018-02-10 07:49:36.506228'

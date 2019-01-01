@@ -1,0 +1,49 @@
+AllCops:
+  Exclude:
+    - "bin/**/*"
+  TargetRubyVersion: 2.5
+Documentation:
+  Enabled: false
+Metrics/AbcSize:
+  Max: 30
+  Exclude:
+    - "db/migrate/*.rb"
+Metrics/BlockLength:
+  Exclude:
+    - "db/migrate/*.rb"
+    - "db/schema.rb"
+    - "spec/**/*.rb"
+Metrics/ClassLength:
+  Exclude:
+    - "spec/**/*.rb"
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - "db/seeds.rb"
+Metrics/MethodLength:
+  Exclude:
+    - "db/migrate/*.rb"
+    - "db/schema.rb"
+Style/BlockComments:
+  Exclude:
+    - "spec/spec_helper.rb"
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+  Exclude:
+    - "config/application.rb"
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/HashSyntax:
+  Exclude:
+    - "db/migrate/*.rb"
+Style/FormatStringToken:
+  EnforcedStyle: template
+Style/NumericLiterals:
+  Exclude:
+    - "db/schema.rb"
+    - "spec/**/*.rb"
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  Exclude:
+    - "Gemfile"
+    - "spec/spec_helper.rb"

@@ -1,0 +1,79 @@
+---
+race_distance_0:
+  id: 0
+  distance: 0
+  name: Other Distances
+  created_at: '2018-12-31 14:16:39.28262'
+  updated_at: '2018-12-31 14:16:39.28262'
+race_distance_1:
+  id: 1
+  distance: 1609
+  name: 1 mile
+  created_at: '2018-12-31 14:16:39.306736'
+  updated_at: '2018-12-31 14:16:39.306736'
+race_distance_2:
+  id: 2
+  distance: 3000
+  name: 3000m
+  created_at: '2018-12-31 14:16:39.334201'
+  updated_at: '2018-12-31 14:16:39.334201'
+race_distance_3:
+  id: 3
+  distance: 5000
+  name: 5k
+  created_at: '2018-12-31 14:16:39.354623'
+  updated_at: '2018-12-31 14:16:39.354623'
+race_distance_4:
+  id: 4
+  distance: 10000
+  name: 10k
+  created_at: '2018-12-31 14:16:39.381858'
+  updated_at: '2018-12-31 14:16:39.381858'
+race_distance_5:
+  id: 5
+  distance: 15000
+  name: 15k
+  created_at: '2018-12-31 14:16:39.401806'
+  updated_at: '2018-12-31 14:16:39.401806'
+race_distance_6:
+  id: 6
+  distance: 20000
+  name: 20k
+  created_at: '2018-12-31 14:16:39.425433'
+  updated_at: '2018-12-31 14:16:39.425433'
+race_distance_7:
+  id: 7
+  distance: 21097
+  name: Half Marathon
+  created_at: '2018-12-31 14:16:39.448716'
+  updated_at: '2018-12-31 14:16:39.448716'
+race_distance_8:
+  id: 8
+  distance: 42195
+  name: Marathon
+  created_at: '2018-12-31 14:16:39.472835'
+  updated_at: '2018-12-31 14:16:39.472835'
+race_distance_9:
+  id: 9
+  distance: 50000
+  name: 50k
+  created_at: '2018-12-31 14:16:39.499869'
+  updated_at: '2018-12-31 14:16:39.499869'
+race_distance_10:
+  id: 10
+  distance: 80467
+  name: 50 miles
+  created_at: '2018-12-31 14:16:39.521752'
+  updated_at: '2018-12-31 14:16:39.521752'
+race_distance_11:
+  id: 11
+  distance: 100000
+  name: 100k
+  created_at: '2018-12-31 14:16:39.548018'
+  updated_at: '2018-12-31 14:16:39.548018'
+race_distance_12:
+  id: 12
+  distance: 160934
+  name: 100 miles
+  created_at: '2018-12-31 14:16:39.568164'
+  updated_at: '2018-12-31 14:16:39.568164'
