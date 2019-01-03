@@ -14,6 +14,7 @@ class Athlete < ApplicationRecord
   has_many :subscriptions
 
   before_create :generate_confirmation_token
+  before_destroy :remove_from_mailing_list
 
   def self.find_all_by_is_active(is_active = true)
     results = where("is_active = ?", is_active).order("updated_at")
@@ -41,5 +42,9 @@ class Athlete < ApplicationRecord
 
   def generate_confirmation_token
     self.confirmation_token = SecureRandom.urlsafe_base64(32).to_s if confirmation_token.blank?
+  end
+
+  def remove_from_mailing_list
+    RemoveFromMailingListWorker.perform_async(id, email)
   end
 end

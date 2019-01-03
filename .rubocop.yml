@@ -4,6 +4,8 @@ AllCops:
   TargetRubyVersion: 2.5
 Documentation:
   Enabled: false
+Lint/UriEscapeUnescape:
+  Enabled: false
 Metrics/AbcSize:
   Max: 30
   Exclude:
@@ -21,6 +23,7 @@ Metrics/LineLength:
   Exclude:
     - "db/seeds.rb"
 Metrics/MethodLength:
+  Max: 25
   Exclude:
     - "db/migrate/*.rb"
     - "db/schema.rb"
@@ -28,9 +31,7 @@ Style/BlockComments:
   Exclude:
     - "spec/spec_helper.rb"
 Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
-  Exclude:
-    - "config/application.rb"
+  Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
 Style/HashSyntax:

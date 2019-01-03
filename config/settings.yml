@@ -1,0 +1,23 @@
+app:
+  name: 'Strafforts'
+  base_url: <%= ENV['BASE_URL'] %>
+  production_url: 'https://www.strafforts.com'
+  currency: 'gbp'
+  currency_symbol: '£'
+  demo_athlete: 9123806
+  description: 'An Analytics App for Your Strava Running Best Efforts, PBs/PRs and Races'
+  emailer:
+    default_sender_name: 'Yi Zeng'
+    default_sender_email: 'support@strafforts.com'
+  facebook_page_url: 'https://www.facebook.com/strafforts'
+  html_meta_description: 'An analytics app that allow athletes to analyze their visualized Strava running best efforts, personal bests and races data in tables and charts.'
+  html_meta_description_for_athletes: 'Visualized Strava running best efforts, PBs/PRs and races data for '
+  html_meta_keywords: 'strava,strafforts,bestefforts,pb,races,running,data,visualizer,analytics'
+  title: 'Strafforts - An Analytics App for Your Strava Running Best Efforts, PBs/PRs and Races'
+  version: <%= ENV['APP_VERSION'] %>
+strava:
+  api_auth_authorize_url: 'https://www.strava.com/oauth/authorize'
+  api_auth_deauthorize_url: 'https://www.strava.com/oauth/deauthorize'
+  api_auth_token_url: 'https://www.strava.com/oauth/token'
+  api_client_id: <%= ENV['STRAVA_API_CLIENT_ID'] %>
+  url: 'https://www.strava.com'

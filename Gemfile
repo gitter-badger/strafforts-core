@@ -33,6 +33,8 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
   # RSpec for Rails-3+
+  gem "factory_bot_rails", "~> 4.0"
+  gem "faker"
   gem 'rspec-rails', '~> 3.8'
 end
 
@@ -41,11 +43,24 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # A Ruby static code analyzer and formatter, based on the community Ruby style guide.
+  gem 'rubocop', require: false
 end
 
 group :test do
   gem 'rails-controller-testing' # If you are using Rails 5.x
   gem 'shoulda-matchers', '4.0.0.rc1'
+
+  gem 'rspec-sidekiq'
+  gem 'webmock'
+
+  gem 'codecov', require: false # Code coverage tool.
+  gem 'simplecov', require: false # Code coverage tool.
+end
+
+group :production do
+  gem 'heroku-deflater' # Enable gzip compression on heroku, but don't compress images.
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -56,3 +71,13 @@ gem 'sidekiq'
 
 # A Ruby client library for Redis
 gem 'redis'
+
+# Decorators/View-Models for Rails Applications.
+gem 'draper'
+
+# asiest way to add multi-environment yaml settings to Rails, Sinatra, Pandrino and other Ruby projects.
+gem 'config'
+
+gem 'mailerlite' # Mailer Lite API wrapper.
+gem 'strava-api-v3' # Strava Ruby API Client.
+gem 'stripe' # Ruby library for the Stripe API.

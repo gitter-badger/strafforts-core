@@ -1,0 +1,7 @@
+---
+:concurrency: 1 # Set to 1 to avoid reaching Strava's API throttle.
+:queues:
+  - [critical, 4]
+  - [default, 2]
+  - low
+max_retries: 3
