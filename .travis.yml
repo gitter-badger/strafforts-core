@@ -18,4 +18,4 @@ before_install:
 
 script:
   - docker-compose build
-  - rails rspec
+  - docker-compose run web rspec
