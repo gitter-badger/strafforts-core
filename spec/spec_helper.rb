@@ -1,11 +1,11 @@
 require 'simplecov'
+
 SimpleCov.start 'rails' do
   add_filter do |source_file|
     source_file.lines.count < 3
   end
   add_group 'Decorators', 'app/decorators'
 end
-Rails.application.eager_load!
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [

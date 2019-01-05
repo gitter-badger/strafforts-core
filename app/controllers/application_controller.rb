@@ -19,8 +19,6 @@ class ApplicationController < ActionController::Base
   RECENT_ITEMS_LIMIT = 20
   BEST_EFFORTS_LIMIT = 100
 
-  protect_from_forgery with: :exception
-
   def self.get_authorize_url(request)
     "#{STRAVA_API_AUTH_AUTHORIZE_URL}"\
     "?client_id=#{STRAVA_API_CLIENT_ID}"\
@@ -103,18 +101,30 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def self.set_last_active_at(athlete) # rubocop:disable AccessorMethodName
-    athlete.last_active_at = Time.now.utc
-    athlete.save!
+  def find_athlete
+    @athlete = Athlete.find_by(id: params[:id])
+
+    return unless @athlete.nil?
+
+    Rails.logger.warn("AthletesController - Could not find athlete '#{params[:id]}'.")
+    render json: { error: Messages::ATHLETE_NOT_FOUND }.to_json, status: 404
   end
 
-  def self.raise_athlete_not_found_error(id)
-    error_message = "Could not find the requested athlete '#{id}' by id."
-    raise ActionController::RoutingError, error_message
+  def require_current_user
+    @is_current_user = @athlete.access_token == cookies.signed[:access_token]
+
+    return if @is_current_user
+
+    Rails.logger.warn("AthletesController - "\
+      "Could not perform action for an athlete #{@athlete.id} that is not the currently logged in.")
+    render json: { error: Messages::ATHLETE_NOT_ACCESSIBLE }.to_json, status: 403
   end
 
-  def self.raise_athlete_not_accessible_error(id)
-    error_message = "Could not access athlete '#{id}'."
-    raise ActionController::RoutingError, error_message
+  def require_pro_subscription
+    @athlete = @athlete.decorate
+
+    return if @athlete.pro_subscription?
+
+    render json: { error: Messages::PRO_ACCOUNTS_ONLY }.to_json, status: 403
   end
 end

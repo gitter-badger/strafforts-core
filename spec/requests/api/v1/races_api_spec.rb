@@ -5,9 +5,12 @@ RSpec.describe Api::V1::RacesController, type: :request do
   let(:url) { "/#{API_ROOT_PATH}/athletes/#{athlete_id}/races" }
 
   describe "GET index" do
-    it "should raise routing error when the requested athlete does not exist" do
-      expect { get url }
-        .to raise_error(ActionController::RoutingError, "Could not find the requested athlete '#{athlete_id}' by id.")
+    it "should be 404 when the requested athlete does not exist" do
+      # act.
+      get url
+
+      # assert.
+      expect(response).to have_http_status(404)
     end
 
     context "for an athlete without PRO subscription" do

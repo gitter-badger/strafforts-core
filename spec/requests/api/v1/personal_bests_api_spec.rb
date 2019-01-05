@@ -2,9 +2,9 @@ require "rails_helper"
 
 RSpec.describe Api::V1::PersonalBestsController, type: :request do
   describe "GET index" do
-    it "should raise routing error when the requested athlete does not exist" do
-      expect { get "/#{API_ROOT_PATH}/athletes/987654321/personal-bests" }
-        .to raise_error(ActionController::RoutingError, "Could not find the requested athlete '987654321' by id.")
+    it "should be 404 when the requested athlete does not exist" do
+      get "/#{API_ROOT_PATH}/athletes/987654321/personal-bests"
+      expect(response).to have_http_status(404)
     end
 
     it "should be a 404 with an invalid distance" do

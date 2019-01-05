@@ -28,7 +28,7 @@ class StripeApiWrapper
       )
     end
 
-    def retrieve_customer(athlete, stripe_token, stripe_email) # rubocop:disable AbcSize, CyclomaticComplexity, PerceivedComplexity, MethodLength
+    def retrieve_customer(athlete, stripe_token, stripe_email) # rubocop:disable AbcSize, CyclomaticComplexity, PerceivedComplexity, MethodLength, LineLength
       stripe_customer = StripeCustomer.find_by(athlete_id: athlete.id)
 
       # Check if the saved StripeCustomer still actually exists on Stripe.

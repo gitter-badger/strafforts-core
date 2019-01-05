@@ -1,4 +1,6 @@
 class Api::V1::AthletesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   before_action :find_athlete, :require_current_user
   before_action :require_pro_subscription, only: %i[fetch_latest reset_profile]
 
@@ -36,6 +38,8 @@ class Api::V1::AthletesController < ApplicationController
 
     # Fetch the latest data for this athlete.
     FetchActivityWorker.perform_async(access_token)
+
+    render json: {}, status: 200
   rescue StandardError => e
     Rails.logger.error("AthletesController - Could not fetch latest. "\
         "#{e.message}\nBacktrace:\n\t#{e.backtrace.join("\n\t")}")
@@ -54,15 +58,21 @@ class Api::V1::AthletesController < ApplicationController
       @athlete = @athlete.decorate
       ::StripeApiWrapper.charge(@athlete, subscription_plan, params[:stripeToken], params[:stripeEmail])
       ::Creators::SubscriptionCreator.create(@athlete, subscription_plan.name)
+
+      render json: {}, status: 200
     rescue Stripe::StripeError => e
-      Rails.logger.error("AthletesController - StripeError while subscribing to PRO plan for athlete '#{@athlete.id}'. "\
-          "Status: #{e.http_status}. Message: #{e.json_body.blank? ? '' : e.json_body[:error][:message]}\n"\
-          "Backtrace:\n\t#{e.backtrace.join("\n\t")}")
-      render json: { error: "#{Messages::STRIPE_ERROR} #{e.json_body.blank? ? '' : e.json_body[:error][:message]}" }.to_json, status: 402
+      Rails.logger.error("AthletesController - "\
+        "StripeError while subscribing to PRO plan for athlete '#{@athlete.id}'. "\
+        "Status: #{e.http_status}. Message: #{e.json_body.blank? ? '' : e.json_body[:error][:message]}\n"\
+        "Backtrace:\n\t#{e.backtrace.join("\n\t")}")
+
+      message_body = e.json_body.blank? ? "" : e.json_body[:error][:message]
+      render json: { error: "#{Messages::STRIPE_ERROR} #{message_body}" }.to_json, status: 402
       return
     rescue StandardError => e
-      Rails.logger.error("AthletesController - Subscribing to PRO plan '#{subscription_plan.name}' failed for athlete '#{@athlete.id}'. "\
-          "#{e.message}\nBacktrace:\n\t#{e.backtrace.join("\n\t")}")
+      Rails.logger.error("AthletesController - "\
+        "Subscribing to PRO plan '#{subscription_plan.name}' failed for athlete '#{@athlete.id}'. "\
+        "#{e.message}\nBacktrace:\n\t#{e.backtrace.join("\n\t")}")
       render json: { error: Messages::PAYMENT_FAILED }.to_json, status: 500
       return
     end
@@ -89,6 +99,8 @@ class Api::V1::AthletesController < ApplicationController
 
       # Fetch all data for this athlete.
       FetchActivityWorker.perform_async(access_token, mode: "all")
+
+      render json: {}, status: 200
     rescue StandardError => e
       Rails.logger.error("AthletesController - Could not reset profile for athlete '#{athlete_id}'. "\
           "#{e.message}\nBacktrace:\n\t#{e.backtrace.join("\n\t")}")
@@ -98,33 +110,7 @@ class Api::V1::AthletesController < ApplicationController
   def save_profile
     is_public = params[:is_public].blank? || params[:is_public]
     @athlete.update(is_public: is_public)
-  end
 
-  private
-
-  def find_athlete
-    @athlete = Athlete.find_by(id: params[:id])
-
-    return unless @athlete.nil?
-
-    Rails.logger.warn("AthletesController - Could not perform action for an athlete '#{params[:id]}' that could not be found.")
-    render json: { error: Messages::ATHLETE_NOT_FOUND }.to_json, status: 404
-  end
-
-  def require_current_user
-    @is_current_user = @athlete.access_token == cookies.signed[:access_token]
-
-    return if @is_current_user
-
-    Rails.logger.warn("AthletesController - Could not perform action for an athlete #{@athlete.id} that is not the currently logged in.")
-    render json: { error: Messages::ATHLETE_NOT_ACCESSIBLE }.to_json, status: 403
-  end
-
-  def require_pro_subscription
-    @athlete = @athlete.decorate
-
-    return if @athlete.pro_subscription?
-
-    render json: { error: Messages::PRO_ACCOUNTS_ONLY }.to_json, status: 403
+    render json: {}, status: 200
   end
 end

@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       # Authentication related routes.
-      get "auth/exchange-token" => "auth#exchange_token"
-      get "auth/deauthorize" => "auth#deauthorize"
-      get "auth/logout" => "auth#logout"
-      get "auth/verify-email/:token" => "auth#verify_email_confirmation_token"
+      get "auth/confirm-email/:token" => "auth#confirm_email"
+
+      post "auth/login" => "auth#login"
+      post "auth/deauthorize" => "auth#deauthorize"
 
       # Athlete related routes.
       get "athletes/:id/meta" => "meta#index"

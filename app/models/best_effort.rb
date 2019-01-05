@@ -13,7 +13,8 @@ class BestEffort < ApplicationRecord
     Rails.cache.delete(format(CacheKeys::META, athlete_id: athlete_id))
     Rails.cache.delete(format(CacheKeys::PBS_OVERVIEW, athlete_id: athlete_id))
     Rails.cache.delete(format(CacheKeys::PBS_RECENT, athlete_id: athlete_id))
-    Rails.cache.delete(format(CacheKeys::PBS_DISTANCE, athlete_id: athlete_id, best_effort_type_id: best_effort_type_id))
+    Rails.cache.delete(format(CacheKeys::PBS_DISTANCE,
+                              athlete_id: athlete_id, best_effort_type_id: best_effort_type_id))
   end
 
   def self.find_top_by_athlete_id_and_best_effort_type_id(athlete_id, best_effort_type_id, limit)

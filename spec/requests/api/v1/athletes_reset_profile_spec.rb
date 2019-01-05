@@ -57,7 +57,11 @@ RSpec.describe Api::V1::AthletesController, type: :request do
         token_refresh_request_body = create_refresh_token_request_body(access_token)
 
         setup_cookie(access_token)
-        refresh_token_response_body = { access_token: access_token, refresh_token: "1234567898765432112345678987654321", expires_at: 1531385304 }.to_json
+        refresh_token_response_body = {
+          access_token: access_token,
+          refresh_token: "1234567898765432112345678987654321",
+          expires_at: 1531385304
+        }.to_json
         stub_strava_post_request(Settings.strava.api_auth_token_url, token_refresh_request_body, 200, refresh_token_response_body)
 
         athlete = Athlete.find_by(id: 9123806)
@@ -92,7 +96,11 @@ RSpec.describe Api::V1::AthletesController, type: :request do
         token_refresh_request_body = create_refresh_token_request_body(access_token)
 
         setup_cookie(access_token)
-        refresh_token_response_body = { access_token: access_token, refresh_token: "1234567898765432112345678987654321", expires_at: 1531385304 }.to_json
+        refresh_token_response_body = {
+          access_token: access_token,
+          refresh_token: "1234567898765432112345678987654321",
+          expires_at: 1531385304
+        }.to_json
         stub_strava_post_request(Settings.strava.api_auth_token_url, token_refresh_request_body, 200, refresh_token_response_body)
 
         athlete = Athlete.find_by(id: 9123806)

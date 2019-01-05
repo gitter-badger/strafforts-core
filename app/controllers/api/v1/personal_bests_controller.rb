@@ -1,27 +1,29 @@
 class Api::V1::PersonalBestsController < ApplicationController
-  def index # rubocop:disable MethodLength, CyclomaticComplexity, AbcSize, PerceivedComplexity
-    athlete = Athlete.find_by(id: params[:id])
-    ApplicationController.raise_athlete_not_found_error(params[:id]) if athlete.nil?
+  before_action :find_athlete
 
-    athlete = athlete.decorate
-    heart_rate_zones = ApplicationHelper::Helper.get_heart_rate_zones(athlete.id)
+  def index # rubocop:disable MethodLength, CyclomaticComplexity, AbcSize, PerceivedComplexity
+    athlete_id = @athlete.id
+    measurement_preference = @athlete.athlete_info.measurement_preference
+    @athlete = @athlete.decorate
+
+    heart_rate_zones = ApplicationHelper::Helper.get_heart_rate_zones(athlete_id)
 
     results = []
     unless params[:distance].blank?
       if "overview".casecmp(params[:distance]).zero?
-        results = Rails.cache.fetch(format(CacheKeys::PBS_OVERVIEW, athlete_id: athlete.id)) do
-          items = BestEffort.find_all_pbs_by_athlete_id(athlete.id)
+        results = Rails.cache.fetch(format(CacheKeys::PBS_OVERVIEW, athlete_id: athlete_id)) do
+          items = BestEffort.find_all_pbs_by_athlete_id(athlete_id)
           shaped_items = ApplicationHelper::Helper.shape_best_efforts(
-            items, heart_rate_zones, athlete.athlete_info.measurement_preference
+            items, heart_rate_zones, measurement_preference
           )
           @personal_bests = PersonalBestsDecorator.new(shaped_items)
           @personal_bests.to_show_in_overview
         end
       elsif "recent".casecmp(params[:distance]).zero?
-        results = Rails.cache.fetch(format(CacheKeys::PBS_RECENT, athlete_id: athlete.id)) do
-          items = BestEffort.find_all_pbs_by_athlete_id(athlete.id)
+        results = Rails.cache.fetch(format(CacheKeys::PBS_RECENT, athlete_id: athlete_id)) do
+          items = BestEffort.find_all_pbs_by_athlete_id(athlete_id)
           shaped_items = ApplicationHelper::Helper.shape_best_efforts(
-            items, heart_rate_zones, athlete.athlete_info.measurement_preference
+            items, heart_rate_zones, measurement_preference
           )
           shaped_items.first(RECENT_ITEMS_LIMIT)
         end
@@ -32,7 +34,7 @@ class Api::V1::PersonalBestsController < ApplicationController
         distance = params[:distance].tr("_", "/").tr("-", " ")
         best_effort_type = BestEffortType.find_by_name(distance)
         if best_effort_type.nil?
-          Rails.logger.warn("Could not find requested best effort type '#{distance}' for athlete '#{athlete.id}'.")
+          Rails.logger.warn("Could not find requested best effort type '#{distance}' for athlete '#{athlete_id}'.")
           render json: { error: Messages::DISTANCE_NOT_FOUND }.to_json, status: 404
           return
         end
@@ -41,14 +43,15 @@ class Api::V1::PersonalBestsController < ApplicationController
         major_distance = ApplicationHelper::Helper.major_best_effort_types.select do |item|
           item[:name] == best_effort_type.name
         end
-        if major_distance.blank? && !athlete.pro_subscription?
+        if major_distance.blank? && !@athlete.pro_subscription?
           render json: { error: Messages::PRO_ACCOUNTS_ONLY }.to_json, status: 403
           return
         end
 
-        results = Rails.cache.fetch(format(CacheKeys::PBS_DISTANCE, athlete_id: athlete.id, best_effort_type_id: best_effort_type.id)) do
-          items = BestEffort.find_all_pbs_by_athlete_id_and_best_effort_type_id(athlete.id, best_effort_type.id)
-          ApplicationHelper::Helper.shape_best_efforts(items, heart_rate_zones, athlete.athlete_info.measurement_preference)
+        results = Rails.cache.fetch(format(CacheKeys::PBS_DISTANCE,
+                                           athlete_id: athlete_id, best_effort_type_id: best_effort_type.id)) do
+          items = BestEffort.find_all_pbs_by_athlete_id_and_best_effort_type_id(athlete_id, best_effort_type.id)
+          ApplicationHelper::Helper.shape_best_efforts(items, heart_rate_zones, measurement_preference)
         end
       end
     end

@@ -4,9 +4,9 @@ RSpec.describe Api::V1::MetaController, type: :request do
   let(:expected_folder) { "./spec/requests/expected".freeze }
 
   describe "GET index" do
-    it "should not find athlete by id who does not exist" do
-      expect { get "/#{API_ROOT_PATH}/athletes/987654321/meta" }
-        .to raise_error(ActionController::RoutingError, "Could not find the requested athlete '987654321' by id.")
+    it "should be 404 when the requested athlete does not exist" do
+      get "/#{API_ROOT_PATH}/athletes/987654321/meta"
+      expect(response).to have_http_status(404)
     end
 
     it "should be successful for an existing athlete" do
