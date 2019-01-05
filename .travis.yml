@@ -13,6 +13,8 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   - docker --version
   - docker-compose --version
+  - touch .env
+  - printf "COMPOSE_PROJECT_NAME=strafforts" > .env
 
 script:
   - docker-compose build
