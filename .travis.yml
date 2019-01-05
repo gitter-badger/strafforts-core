@@ -13,9 +13,16 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   - docker --version
   - docker-compose --version
+
+before_script:
   - touch .env
   - printf "COMPOSE_PROJECT_NAME=strafforts" > .env
+  - RAILS_ENV=test docker-compose run web rails db:create
+  - RAILS_ENV=test docker-compose run web rails db:migrate --trace
 
 script:
   - docker-compose build
-  - docker-compose run web rspec
+  - docker-compose run web rspec spec --format documentation --color
+
+notifications:
+  email: false
