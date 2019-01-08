@@ -1,0 +1,71 @@
+---
+best_effort_type_1:
+  id: 1
+  name: 50k
+  created_at: '2018-12-31 14:16:38.848657'
+  updated_at: '2018-12-31 14:16:38.848657'
+best_effort_type_2:
+  id: 2
+  name: Marathon
+  created_at: '2018-12-31 14:16:38.905632'
+  updated_at: '2018-12-31 14:16:38.905632'
+best_effort_type_3:
+  id: 3
+  name: Half Marathon
+  created_at: '2018-12-31 14:16:38.918086'
+  updated_at: '2018-12-31 14:16:38.918086'
+best_effort_type_4:
+  id: 4
+  name: 30k
+  created_at: '2018-12-31 14:16:38.933194'
+  updated_at: '2018-12-31 14:16:38.933194'
+best_effort_type_5:
+  id: 5
+  name: 20k
+  created_at: '2018-12-31 14:16:38.951703'
+  updated_at: '2018-12-31 14:16:38.951703'
+best_effort_type_6:
+  id: 6
+  name: 10 mile
+  created_at: '2018-12-31 14:16:38.977729'
+  updated_at: '2018-12-31 14:16:38.977729'
+best_effort_type_7:
+  id: 7
+  name: 15k
+  created_at: '2018-12-31 14:16:39.005014'
+  updated_at: '2018-12-31 14:16:39.005014'
+best_effort_type_8:
+  id: 8
+  name: 10k
+  created_at: '2018-12-31 14:16:39.02501'
+  updated_at: '2018-12-31 14:16:39.02501'
+best_effort_type_9:
+  id: 9
+  name: 5k
+  created_at: '2018-12-31 14:16:39.044485'
+  updated_at: '2018-12-31 14:16:39.044485'
+best_effort_type_10:
+  id: 10
+  name: 2 mile
+  created_at: '2018-12-31 14:16:39.069332'
+  updated_at: '2018-12-31 14:16:39.069332'
+best_effort_type_11:
+  id: 11
+  name: 1 mile
+  created_at: '2018-12-31 14:16:39.101222'
+  updated_at: '2018-12-31 14:16:39.101222'
+best_effort_type_12:
+  id: 12
+  name: 1k
+  created_at: '2018-12-31 14:16:39.138112'
+  updated_at: '2018-12-31 14:16:39.138112'
+best_effort_type_13:
+  id: 13
+  name: 1/2 mile
+  created_at: '2018-12-31 14:16:39.184465'
+  updated_at: '2018-12-31 14:16:39.184465'
+best_effort_type_14:
+  id: 14
+  name: 400m
+  created_at: '2018-12-31 14:16:39.210607'
+  updated_at: '2018-12-31 14:16:39.210607'

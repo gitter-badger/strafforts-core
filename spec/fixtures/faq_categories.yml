@@ -1,0 +1,31 @@
+---
+faq_category_1:
+  id: 1
+  name: account
+  created_at: '2018-12-31 14:16:39.815782'
+  updated_at: '2018-12-31 14:16:39.815782'
+faq_category_2:
+  id: 2
+  name: best-efforts
+  created_at: '2018-12-31 14:16:39.833611'
+  updated_at: '2018-12-31 14:16:39.833611'
+faq_category_3:
+  id: 3
+  name: personal-bests
+  created_at: '2018-12-31 14:16:39.853152'
+  updated_at: '2018-12-31 14:16:39.853152'
+faq_category_4:
+  id: 4
+  name: races
+  created_at: '2018-12-31 14:16:39.870198'
+  updated_at: '2018-12-31 14:16:39.870198'
+faq_category_5:
+  id: 5
+  name: miscellaneous
+  created_at: '2018-12-31 14:16:39.889271'
+  updated_at: '2018-12-31 14:16:39.889271'
+faq_category_6:
+  id: 6
+  name: support
+  created_at: '2018-12-31 14:16:39.906078'
+  updated_at: '2018-12-31 14:16:39.906078'

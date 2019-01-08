@@ -1,0 +1,91 @@
+---
+gear_001:
+  athlete_id: 9123806
+  gear_id: g1313288
+  name: Fila Facilitator
+  created_at: '2018-02-10 07:49:36.576435'
+  updated_at: '2018-02-10 07:49:36.576435'
+gear_002:
+  athlete_id: 9123806
+  gear_id: g852509
+  name: ASICS GT-2000 3 Lite-Show
+  created_at: '2018-02-10 07:49:36.590772'
+  updated_at: '2018-02-10 07:49:36.590772'
+gear_003:
+  athlete_id: 9123806
+  gear_id: g1135681
+  name: ASICS DS Trainer 19 (Black)
+  created_at: '2018-02-10 07:49:36.605237'
+  updated_at: '2018-02-10 07:49:36.605237'
+gear_004:
+  athlete_id: 9123806
+  gear_id: g798788
+  name: ASICS DS Racer 9
+  created_at: '2018-02-10 07:49:36.61909'
+  updated_at: '2018-02-10 07:49:36.61909'
+gear_005:
+  athlete_id: 9123806
+  gear_id: g2240935
+  name: ASICS DS  Trainer 21
+  created_at: '2018-02-10 07:49:36.630819'
+  updated_at: '2018-02-10 07:49:36.630819'
+gear_006:
+  athlete_id: 9123806
+  gear_id: g2240938
+  name: ASICS DS  Racer 10
+  created_at: '2018-02-10 07:49:36.643006'
+  updated_at: '2018-02-10 07:49:36.643006'
+gear_007:
+  athlete_id: 9123806
+  gear_id: g1283526
+  name: Unbranded Barefoot
+  created_at: '2018-02-10 07:49:36.66008'
+  updated_at: '2018-02-10 07:49:36.66008'
+gear_008:
+  athlete_id: 9123806
+  gear_id: g1642210
+  name: ASICS DS Trainer 20
+  created_at: '2018-02-10 07:49:36.675599'
+  updated_at: '2018-02-10 07:49:36.675599'
+gear_009:
+  athlete_id: 9123806
+  gear_id: g1126882
+  name: ASICS Noosa Tri 10 (Aqua Mint)
+  created_at: '2018-02-10 07:49:36.687662'
+  updated_at: '2018-02-10 07:49:36.687662'
+gear_010:
+  athlete_id: 9123806
+  gear_id: g1642211
+  name: ASICS GT-2000 2
+  created_at: '2018-02-10 07:49:36.698668'
+  updated_at: '2018-02-10 07:49:36.698668'
+gear_011:
+  athlete_id: 9123806
+  gear_id: g1126883
+  name: ASICS Noosa Tri 10 (Orange)
+  created_at: '2018-02-10 07:49:36.70851'
+  updated_at: '2018-02-10 07:49:36.70851'
+gear_012:
+  athlete_id: 9123806
+  gear_id: g1642212
+  name: ASICS DS Trainer 19 (Blue)
+  created_at: '2018-02-10 07:49:36.720294'
+  updated_at: '2018-02-10 07:49:36.720294'
+gear_013:
+  athlete_id: 9123806
+  gear_id: g1642213
+  name: ASICS DS Trainer 18 (Blue)
+  created_at: '2018-02-10 07:49:36.732424'
+  updated_at: '2018-02-10 07:49:36.732424'
+gear_014:
+  athlete_id: 9123806
+  gear_id: g2823665
+  name: Hoka One One Speedgoat
+  created_at: '2018-02-10 07:49:36.744398'
+  updated_at: '2018-02-10 07:49:36.744398'
+gear_015:
+  athlete_id: 9123806
+  gear_id: g2727667
+  name: ASICS DS Racer 11
+  created_at: '2018-02-10 07:49:36.756832'
+  updated_at: '2018-02-10 07:49:36.756832'

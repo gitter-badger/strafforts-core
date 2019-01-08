@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -9,7 +9,7 @@ require "active_storage/engine"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
-require "action_cable/engine"
+# require "action_cable/engine"
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
@@ -26,6 +26,8 @@ module Strafforts
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.eager_load_paths << Rails.root.join("lib/**/*.rb")
+    config.autoload_paths << Rails.root.join("app/helpers/constants")
 
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
@@ -42,6 +44,6 @@ module Strafforts
     config.active_job.queue_adapter = :sidekiq
 
     # Redis for caching.
-    config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] ||= 'redis://redis:6379/1' }
+    config.cache_store = :redis_cache_store, { url: ENV["REDIS_URL_FOR_CACHING"] ||= "redis://redis:6379/1" }
   end
 end
